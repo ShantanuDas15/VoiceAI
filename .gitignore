@@ -1,0 +1,89 @@
+# Operating System
+.DS_Store
+Thumbs.db
+
+# Editors / IDEs
+.vscode/
+.idea/
+*.swp
+*.swo
+*.sublime-workspace
+*.code-workspace
+
+# Python
+__pycache__/
+*.py[cod]
+*.pyo
+.python-version
+.venv/
+venv/
+*.egg-info/
+dist/
+build/
+pip-wheel-metadata/
+.pytest_cache/
+.ruff_cache/
+.mypy_cache/
+__pypackages__/
+
+# Node
+node_modules/
+npm-debug.log*
+yarn-debug.log*
+yarn-error.log*
+pnpm-debug.log*
+.pnp.cjs
+.pnp.js
+
+# Env files (secrets)
+.env
+backend/.env
+frontend/.env
+*.local
+.env.local
+.env.production
+.env.*
+!.env.example
+
+# Storage / DB
+backend/storage/audio/*
+!backend/storage/audio/.gitkeep
+backend/storage/*.db
+*.sqlite3
+*.db
+
+# Machine Learning & Data
+*.pt
+*.pth
+*.sqlite3
+
+# Docker
+.dockerenv
+docker-compose.override.yml
+
+# Logs
+*.log
+logs/
+
+# Testing / coverage
+coverage/
+.nyc_output/
+test-reports/
+
+# Secrets / private keys
+*.pem
+*.key
+*.crt
+*.p12
+*.jks
+*.keystore
+id_rsa
+id_rsa.pub
+secrets.yml
+credentials
+
+# Caches / other
+.cache/
+uv.lock
+
+# End of file
