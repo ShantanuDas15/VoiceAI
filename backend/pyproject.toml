@@ -1,0 +1,27 @@
+[project]
+name = "backend"
+version = "0.1.0"
+description = "Add your description here"
+requires-python = ">=3.12.3"
+dependencies = [
+    "aiofiles>=25.1.0",
+    "aiosqlite>=0.22.1",
+    "alembic>=1.18.4",
+    "fastapi>=0.136.1",
+    "google-genai>=1.75.0",
+    "groq>=1.2.0",
+    "httpx>=0.28.1",
+    "langchain-core>=1.4.0",
+    "langchain-google-genai>=4.2.2",
+    "loguru>=0.7.3",
+    "openai-whisper>=20250625",
+    "pydantic>=2.13.4",
+    "pydantic-settings>=2.14.1",
+    "pydub>=0.25.1",
+    "python-dotenv>=1.2.2",
+    "python-multipart>=0.0.29",
+    "soundfile>=0.13.1",
+    "sqlalchemy>=2.0.49",
+    "tenacity>=9.1.4",
+    "uvicorn>=0.47.0",
+]
