@@ -1,6 +1,6 @@
 from pathlib import Path
 from pydantic_settings import BaseSettings, SettingsConfigDict
-from pydantic import Field
+from pydantic import Field, field_validator
 
 # Resolve backend/.env relative to this file so the backend always reads its own env file
 BASE_DIR = Path(__file__).resolve().parents[1]  # backend/
@@ -15,6 +15,15 @@ class Settings(BaseSettings):
     WHISPER_DEVICE: str = Field(default="cuda")
     AUDIO_UPLOAD_DIR: str = Field(default="./storage/audio")
     ALLOWED_ORIGINS: str = Field(default="http://localhost:5173,http://localhost")
+
+    @field_validator("DATABASE_URL")
+    @classmethod
+    def assemble_db_connection(cls, v: str) -> str:
+        if v.startswith("postgres://"):
+            return v.replace("postgres://", "postgresql+asyncpg://", 1)
+        elif v.startswith("postgresql://"):
+            return v.replace("postgresql://", "postgresql+asyncpg://", 1)
+        return v
 
     @property
     def parsed_allowed_origins(self) -> list[str]:

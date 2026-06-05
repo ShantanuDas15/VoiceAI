@@ -9,8 +9,6 @@ from app.utils.exceptions import SessionNotFound, QuestionNotFound
 # AI and Audio imports
 from app.ai.chains import generate_questions, analyze_answer
 from app.ai.whisper_client import transcribe
-from app.utils.audio import webm_to_wav
-from app.utils.file_manager import get_wav_path, cleanup_file
 
 # --- Database Fetchers ---
 
@@ -42,12 +40,8 @@ async def create_questions_for_session(
     return questions
 
 async def transcribe_audio(webm_path: str) -> str:
-    wav_path = get_wav_path(webm_path)
-    try:
-        webm_to_wav(webm_path, wav_path)
-        return transcribe(wav_path)
-    finally:
-        cleanup_file(wav_path)  # Always clean up the uncompressed WAV file
+    # Groq API natively supports WebM, no need for WAV conversion
+    return transcribe(webm_path)
 
 async def evaluate_and_feedback(
     role: str, question_text: str, transcript: str
