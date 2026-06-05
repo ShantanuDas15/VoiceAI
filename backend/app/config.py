@@ -20,9 +20,16 @@ class Settings(BaseSettings):
     @classmethod
     def assemble_db_connection(cls, v: str) -> str:
         if v.startswith("postgres://"):
-            return v.replace("postgres://", "postgresql+asyncpg://", 1)
+            v = v.replace("postgres://", "postgresql+asyncpg://", 1)
         elif v.startswith("postgresql://"):
-            return v.replace("postgresql://", "postgresql+asyncpg://", 1)
+            v = v.replace("postgresql://", "postgresql+asyncpg://", 1)
+        
+        # asyncpg natively expects `ssl=require` instead of `sslmode=require`
+        if "?sslmode=" in v:
+            v = v.replace("?sslmode=", "?ssl=")
+        elif "&sslmode=" in v:
+            v = v.replace("&sslmode=", "&ssl=")
+            
         return v
 
     @property
