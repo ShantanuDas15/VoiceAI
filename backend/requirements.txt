@@ -8,9 +8,6 @@ loguru
 groq
 pydub
 soundfile
-google-generativeai
-langchain-core
-langchain-google-genai
 sqlalchemy
 alembic
 aiofiles
